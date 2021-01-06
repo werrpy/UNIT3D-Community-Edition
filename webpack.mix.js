@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+let tailwindcss = require("tailwindcss");
 
 /*
  |--------------------------------------------------------------------------
@@ -37,14 +38,15 @@ mix.options({
     .sass('resources/sass/themes/cosmic-void.scss', 'public/css/themes/cosmic-void.css')
 
     /*
-     * Login and TwoStep Auth styles
+     * Auth Styles
      *
      * We compile each of these separately since they should only be loaded with the certain views
      *
-     * Note: These will likely be reworked into VueJS component(s)
      */
-    .sass('resources/sass/main/login.scss', 'public/css/main/login.css')
-    .sass('resources/sass/main/twostep.scss', 'public/css/main/twostep.css')
+     .sass("resources/sass/auth/auth.scss", "public/css").options({
+          processCssUrls: false,
+          postCss: [tailwindcss("./tailwind.config.js")],
+      })
 
     /*
      * Here we take all these scripts and compile them into a single 'unit3d.js' file that will be loaded after 'app.js'

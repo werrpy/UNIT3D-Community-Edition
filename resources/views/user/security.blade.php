@@ -157,27 +157,46 @@
     
                     @if (config('auth.TwoStepEnabled') == true)
                         <div role="tabpanel" class="tab-pane" id="twostep">
-                            <form role="form" method="POST"
-                                action="{{ route('change_twostep', ['username' => $user->username]) }}">
-                                @csrf
-                                <div class="well">
-                                    <h2 class="text-bold">Two Step Authentication</h2>
-                                    <hr>
-                                    <label for="twostep" class="control-label">Use Two Step Auth?</label>
-                                    <div class="radio-inline">
-                                <label><input type="radio" name="twostep" @if ($user->twostep == 1) checked @endif
-                                            value="1">@lang('common.yes')</label>
+                            <div class="card-body">
+                                @if (session('status') == "two-factor-authentication-disabled")
+                                    <div class="alert alert-success" role="alert">
+                                        Two factor Authentication has been disabled.
                                     </div>
-                                    <div class="radio-inline">
-                                        <label><input type="radio" name="twostep" @if ($user->twostep == 0) checked
-                                            @endif value="0">@lang('common.no')</label>
+                                @endif
+
+                                @if (session('status') == "two-factor-authentication-enabled")
+                                    <div class="alert alert-success" role="alert">
+                                        Two factor Authentication has been enabled.
                                     </div>
-                                    <br>
-                                </div>
-                                <div class="well text-center">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                                </div>
-                            </form>
+                                @endif
+
+
+                                <form method="POST" action="/user/two-factor-authentication">
+                                    @csrf
+
+                                    @if (auth()->user()->two_factor_secret)
+                                        @method('DElETE')
+
+                                        <div class="pb-5">
+                                            {!! auth()->user()->twoFactorQrCodeSvg() !!}
+                                        </div>
+
+                                        <div>
+                                            <h3>Recovery Codes:</h3>
+
+                                            <ul>
+                                                @foreach (json_decode(decrypt(auth()->user()->two_factor_recovery_codes)) as $code)
+                                                    <li>{{ $code }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+
+                                        <button class="btn btn-danger">Disable</button>
+                                    @else
+                                        <button class="btn btn-primary">Enable</button>
+                                    @endif
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endif

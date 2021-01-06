@@ -23,37 +23,6 @@
 */
 
 Route::group(['middleware' => 'language'], function () {
-    /*
-    |---------------------------------------------------------------------------------
-    | Website (Not Authorized) (Alpha Ordered)
-    |---------------------------------------------------------------------------------
-    */
-    Route::group(['before' => 'auth', 'middleware' => 'guest'], function () {
-        // Activation
-        Route::get('/activate/{token}', 'Auth\ActivationController@activate')->name('activate');
-
-        // Application Signup
-        Route::get('/application', 'Auth\ApplicationController@create')->name('application.create');
-        Route::post('/application', 'Auth\ApplicationController@store')->name('application.store');
-
-        // Authentication
-        Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-        Route::post('login', 'Auth\LoginController@login')->name('');
-
-        // Forgot Username
-        Route::get('username/reminder', 'Auth\ForgotUsernameController@showForgotUsernameForm')->name('username.request');
-        Route::post('username/reminder', 'Auth\ForgotUsernameController@sendUsernameReminder')->name('username.email');
-
-        // Password Reset
-        Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-        Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-        Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('');
-        Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-
-        // Registration
-        Route::get('/register/{code?}', 'Auth\RegisterController@registrationForm')->name('registrationForm');
-        Route::post('/register/{code?}', 'Auth\RegisterController@register')->name('register');
-    });
 
     /*
     |---------------------------------------------------------------------------------

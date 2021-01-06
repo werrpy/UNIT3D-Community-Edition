@@ -69,14 +69,6 @@
                                         <option @if ($user->style == 9) selected @endif value="9">Cosmic Void Theme</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="custom_css" class="control-label">External CSS Stylesheet</label>
-                                    <label>
-                                        <input type="text" name="custom_css" class="form-control"
-                                        value="@if ($user->custom_css) {{ $user->custom_css }}@endif"
-                                            placeholder="CSS URL">
-                                    </label>
-                                </div>
                                 <label for="sidenav" class="control-label">Side Navigation</label>
                                 <div class="radio-inline">
                                     <label><input type="radio" name="sidenav" @if ($user->nav == 1) checked
@@ -133,17 +125,6 @@
                                 <div class="radio-inline">
                                     <label><input type="radio" name="show_poster" @if ($user->show_poster == 0) checked
                                         @endif value="0">@lang('common.no')</label>
-                                </div>
-                                <br>
-                                <br>
-                                <label for="ratings" class="control-label">Ratings Source?</label>
-                                <div class="radio-inline">
-                                    <label><input type="radio" name="ratings" @if ($user->ratings == 1) checked
-                                        @endif value="1">IMDB</label>
-                                </div>
-                                <div class="radio-inline">
-                                    <label><input type="radio" name="ratings" @if ($user->ratings == 0) checked
-                                        @endif value="0">TMDB</label>
                                 </div>
                             </div>
                             <div class="well some-padding">

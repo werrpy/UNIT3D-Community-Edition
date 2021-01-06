@@ -1,143 +1,129 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+@extends('layout.auth')
 
-<head>
-    <meta charset="UTF-8">
-    <title>@lang('auth.login') - {{ config('other.title') }}</title>
-    @section('meta')
-        <meta name="description"
-            content="@lang('auth.login-now-on') {{ config('other.title') }} . @lang('auth.not-a-member')">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta property="og:title" content="@lang('auth.login')">
-        <meta property="og:site_name" content="{{ config('other.title') }}">
-        <meta property="og:type" content="website">
-        <meta property="og:image" content="{{ url('/img/og.png') }}">
-        <meta property="og:description" content="{{ config('unit3d.powered-by') }}">
-        <meta property="og:url" content="{{ url('/') }}">
-        <meta property="og:locale" content="{{ config('app.locale') }}">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-    @show
-    <link rel="shortcut icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url('/favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ mix('css/main/login.css') }}" crossorigin="anonymous">
-</head>
-
-<body>
-    <!-- Dont Not Change! For Jackett Support -->
-    <div class="Jackett" style="display:none;">{{ config('unit3d.powered-by') }}</div>
-    <!-- Dont Not Change! For Jackett Support -->
-
-    @if ($errors->any())
-        <div id="ERROR_COPY" style="display: none;">
-            @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-            @endforeach
+@section('content')
+    <section class="absolute w-full h-full">
+        <div class="absolute top-0 w-full h-full bg-gray-900"
+             style="background-image: url(/img/pipes/silver.png);
+             background-repeat: no-repeat;
+             background-attachment: fixed;
+             background-position: center;
+             -webkit-background-size: cover;
+             -moz-background-size: cover;
+             -o-background-size: cover;
+             background-size: cover;">
         </div>
-    @endif
-    <div class="wrapper fadeInDown">
-        <svg viewBox="0 0 800 100" class="sitebanner">
-            <symbol id="s-text">
-                <text text-anchor="middle" x="50%" y="50%" dy=".35em">
-                    {{ config('other.title') }}
-                </text>
-            </symbol>
-            <use xlink:href="#s-text" class="text"></use>
-            <use xlink:href="#s-text" class="text"></use>
-            <use xlink:href="#s-text" class="text"></use>
-            <use xlink:href="#s-text" class="text"></use>
-            <use xlink:href="#s-text" class="text"></use>
-        </svg>
+        <div class="container mx-auto px-4 h-full">
+            <div class="flex content-center items-center justify-center h-full">
+                <div class="w-full lg:w-4/12 px-4">
+                    @if (session('status'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{ session('status') }}.</span>
+                        </div>
+                    @endif
+                    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300 border-0">
+                        <div class="rounded-t mb-0 px-6 py-6">
+                            <div class="text-center mb-3">
+                                <h6 class="text-gray-600 text-xl font-bold">
+                                    {{ config('app.name') }}
+                                </h6>
+                            </div>
+                            <div class="btn-wrapper text-center">
+                                <button class="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                                        type="button"
+                                        style="transition: all 0.15s ease 0s;">
+                                    Login
+                                </button>
+                                <button
+                                        class="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                                        type="button"
+                                        style="transition: all 0.15s ease 0s;">
+                                    Reset Pass
+                                </button>
+                                <button
+                                        class="bg-white active:bg-gray-100 text-gray-800 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs"
+                                        type="button"
+                                        style="transition: all 0.15s ease 0s;">
+                                    Register
+                                </button>
+                            </div>
+                            <hr class="mt-6 border-b-1 border-gray-400" />
+                        </div>
+                        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+                            <div class="text-gray-500 text-center mb-3 font-bold">
+                                <small>Sign In With Your Credentials</small>
+                            </div>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf()
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                           for="grid-password">
+                                        Username
+                                    </label>
+                                    <input type="username" name="username" id="username"
+                                           class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full @error('username') border-red-500 @enderror"
+                                           placeholder="Username"
+                                           style="transition: all 0.15s ease 0s;"/>
 
-        <div id="formContent">
-            <a href="{{ route('login') }}">
-                <h2 class="active">@lang('auth.login') </h2>
-            </a>
-            <a href="{{ route('registrationForm', ['code' => 'null']) }}">
-                <h2 class="inactive underlineHover">@lang('auth.signup') </h2>
-            </a>
+                                    @error('username')
+                                    <p class="text-red-500 text-xs italic mt-4">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
+                                <div class="relative w-full mb-3">
+                                    <label class="block uppercase text-gray-700 text-xs font-bold mb-2"
+                                           for="grid-password">
+                                        Password
+                                    </label>
+                                    <input type="password" name="password" id="password"
+                                           class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full @error('password') border-red-500 @enderror"
+                                           placeholder="Password"
+                                           style="transition: all 0.15s ease 0s;"/>
 
-            <div class="fadeIn first">
-                <img src="{{ url('/img/icon.svg') }}" id="icon" alt="@lang('auth.user-icon')" />
-            </div>
-
-            <form role="form" method="POST" action="{{ route('login') }}">
-                @csrf
-                <div>
-                    <label for="username" class="col-md-4 control-label">@lang('auth.username')</label>
-                    <div class="col-md-6">
-                        <input id="username" type="text" class="form-control" name="username"
-                            value="{{ old('username') }}" required autofocus>
-                    </div>
-                </div>
-
-                <div>
-                    <label for="password" class="col-md-4 control-label">@lang('auth.password')</label>
-                    <div class="col-md-6">
-                        <input id="password" type="password" class="form-control" name="password" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-6 col-md-offset-4">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                                @lang('auth.remember-me')
-                            </label>
+                                    @error('password')
+                                    <p class="text-red-500 text-xs italic mt-4">
+                                        {{ $message }}
+                                    </p>
+                                    @enderror
+                                </div>
+                                <div>
+                                    <label class="inline-flex items-center cursor-pointer">
+                                        <input name="remember" id="remember"
+                                               type="checkbox"
+                                               class="form-checkbox text-gray-800 ml-1 w-5 h-5"
+                                               style="transition: all 0.15s ease 0s;"/>
+                                        <span class="ml-2 text-sm font-semibold text-gray-700">
+                                            Remember me
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="text-center mt-6">
+                                    <button class="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
+                                            type="submit"
+                                            style="transition: all 0.15s ease 0s;">
+                                        Sign In
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                @if (config('captcha.enabled') == true)
-                    @hiddencaptcha
-                @endif
-
-                <button type="submit" class="fadeIn fourth" id="login-button">@lang('auth.login')</button>
-            </form>
-
-            <div id="formFooter">
-                <a href="{{ route('password.request') }}">
-                    <h2 class="inactive underlineHover">@lang('auth.lost-password') </h2>
-                </a>
-                <a href="{{ route('username.request') }}">
-                    <h2 class="inactive underlineHover">@lang('auth.lost-username') </h2>
-                </a>
             </div>
         </div>
-    </div>
-
-    <script src="{{ mix('js/app.js') }}" crossorigin="anonymous"></script>
-    @foreach (['warning', 'success', 'info'] as $key)
-        @if (Session::has($key))
-            <script nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}">
-                const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 3000
-                });
-        
-                Toast.fire({
-                    icon: '{{ $key }}',
-                    title: '{{ Session::get($key) }}'
-                })
-        
-            </script>
-        @endif
-    @endforeach
-
-    @if (Session::has('errors'))
-        <script nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}">
-            Swal.fire({
-                title: '<strong style=" color: rgb(17,17,17);">Error</strong>',
-                icon: 'error',
-                html: jQuery("#ERROR_COPY").html(),
-                showCloseButton: true,
-            })
-
-        </script>
-    @endif
-
-</body>
-
-</html>
+        <footer class="absolute w-full bottom-0 bg-gray-900 pb-6">
+            <div class="container mx-auto px-4">
+                <hr class="mb-6 border-b-1 border-gray-700" />
+                <div class="flex flex-wrap items-center md:justify-between justify-center">
+                    <div class="w-full md:w-4/12 px-4">
+                        <div class="text-sm text-white font-semibold py-1">
+                            Powered By
+                            <a href="#" class="text-white hover:text-gray-400 text-sm font-semibold py-1">
+                                UNIT3D Community Edition
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+@endsection
