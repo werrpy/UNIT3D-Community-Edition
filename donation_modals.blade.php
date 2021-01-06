@@ -1,4 +1,4 @@
-﻿{{-- Donate Modal --}}
+{{-- Donate Modal --}}
 @foreach ($packages as $package)
 <div class="modal fade" id="modal_donation_{{ $package->id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dark modal-lg">
