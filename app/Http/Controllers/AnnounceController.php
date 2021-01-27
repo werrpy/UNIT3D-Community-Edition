@@ -497,7 +497,7 @@ class AnnounceController extends Controller
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    protected function sendFinalAnnounceResponse($repDict)
+    protected function sendFinalAnnounceResponse($repDict): \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
     {
         return \response(Bencode::bencode($repDict))
             ->withHeaders(['Content-Type' => 'text/plain; charset=utf-8'])
