@@ -92,17 +92,13 @@
                                     <div class="form-group">
                                         <strong>@lang('auth.proof-image-title')</strong><br>
                                         @lang('auth.proof-min')<br>
-                                        <label for="image1">@lang('auth.proof-image') 1:</label>
-                                        <label>
-                                            <input type="text" name="images[]" class="form-control" value="">
-                                        </label>
+                                        <label for="proof-image1">@lang('auth.proof-image') 1:</label>
+                                        <input id="proof-image1" type="text" name="images[]" class="form-control" value="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="image2">@lang('auth.proof-image') 2:</label>
-                                        <label>
-                                            <input type="text" name="images[]" class="form-control" value="">
-                                        </label>
+                                        <label for="proof-image2">@lang('auth.proof-image') 2:</label>
+                                        <input id="proof-image2" type="text" name="images[]" class="form-control" value="">
                                     </div>
 
                                     <div class="more-images"></div>
@@ -117,17 +113,13 @@
                                     <div class="form-group">
                                         <strong>@lang('auth.proof-profile-title')</strong><br>
                                         @lang('auth.proof-min')<br>
-                                        <label for="link1">@lang('auth.proof-profile') 1:</label>
-                                        <label>
-                                            <input type="text" name="links[]" class="form-control" value="">
-                                        </label>
+                                        <label for="proof-profile1">@lang('auth.proof-profile') 1:</label>
+                                        <input id="proof-profile1" type="text" name="links[]" class="form-control" value="">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="link2">@lang('auth.proof-profile') 2:</label>
-                                        <label>
-                                            <input type="text" name="links[]" class="form-control" value="">
-                                        </label>
+                                        <label for="proof-profile2">@lang('auth.proof-profile') 2:</label>
+                                        <input id="proof-profile2" type="text" name="links[]" class="form-control" value="">
                                     </div>
 
                                     <div class="more-links"></div>

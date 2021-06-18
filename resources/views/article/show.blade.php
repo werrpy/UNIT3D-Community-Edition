@@ -115,12 +115,10 @@
                     <button type="submit" class="btn btn-danger">@lang('common.submit')</button>
                     <label class="radio-inline"><strong>@lang('common.anonymous') @lang('common.comment')
                             :</strong></label>
-                    <label>
-                        <input type="radio" value="1" name="anonymous">
-                    </label> @lang('common.yes')
-                    <label>
-                        <input type="radio" value="0" checked="checked" name="anonymous">
-                    </label> @lang('common.no')
+                    <input type="radio" value="1" name="anonymous" id="anonymous-yes">
+                    <label for="anonymous-yes">@lang('common.yes')</label>
+                    <input type="radio" value="0" checked="checked" name="anonymous" id="anonymous-no">
+                    <label for="anonymous-no">@lang('common.no')</label>
                 </form>
             </div>
         </div>

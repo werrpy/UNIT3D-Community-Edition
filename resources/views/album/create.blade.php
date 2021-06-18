@@ -31,10 +31,8 @@
                     @lang('gallery.create-an-album-tip')
                 </h4>
                 <div class="form-group">
-                    <label for="name">IMDB</label>
-                    <label>
-                        <input name="imdb" type="text" class="form-control" placeholder="IMDB #" value="{{ old('imdb') }}">
-                    </label>
+                    <label for="createnewalbum-imdb">IMDB</label>
+                    <input id="createnewalbum-imdb" name="imdb" type="text" class="form-control" placeholder="IMDB #" value="{{ old('imdb') }}">
                 </div>
                 <div class="form-group">
                     <label for="description">@lang('common.album') @lang('common.description')</label>

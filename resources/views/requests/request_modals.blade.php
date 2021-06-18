@@ -12,9 +12,7 @@
                     <p>@lang('request.enter-bp')</p>
                     <fieldset>
                         <input type='hidden' tabindex='3' name='request_id' value='{{ $torrentRequest->id }}'>
-                        <label>
-                            <input class="form-control" type="number" tabindex="3" name='bonus_value' min='100' value="100">
-                        </label>
+                        <input class="form-control" type="number" tabindex="3" name='bonus_value' min='100' value="100">
                         <p>Anonymous Bounty?</p>
                         <div class="radio-inline">
                             <label><input type="radio" name="anon" value="1">@lang('common.yes')</label>

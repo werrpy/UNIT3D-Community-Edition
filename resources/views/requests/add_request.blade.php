@@ -88,39 +88,29 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name">TMDB ID <b>(@lang('request.required'))</b></label>
-                            <label>
-                                <input type="number" name="tmdb" id="autotmdb" class="form-control" value="{{ $tmdb ?? old('tmdb') }}" required>
-                            </label>
+                            <label for="autotmdb">TMDB ID <b>(@lang('request.required'))</b></label>
+                            <input type="number" name="tmdb" id="autotmdb" class="form-control" value="{{ $tmdb ?? old('tmdb') }}" required>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="name">IMDB ID <b>(@lang('torrent.optional'))</b></label>
-                            <label>
-                                <input type="number" name="imdb" id="autoimdb" class="form-control" value="{{ $imdb ?? old('imdb') }}" required>
-                            </label>
+                            <label for="autoimdb">IMDB ID <b>(@lang('torrent.optional'))</b></label>
+                            <input type="number" name="imdb" id="autoimdb" class="form-control" value="{{ $imdb ?? old('imdb') }}" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="name">TVDB ID (@lang('torrent.optional'))</label>
-                            <label>
-                                <input type="number" name="tvdb" id="autotvdb" value="{{ old('tvdb') ?? '0' }}" class="form-control" required>
-                            </label>
+                            <label for="autotvdb">TVDB ID (@lang('torrent.optional'))</label>
+                            <input type="number" name="tvdb" id="autotvdb" value="{{ old('tvdb') ?? '0' }}" class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="name">MAL ID (@lang('request.required') For Anime)</label>
-                            <label>
-                                <input type="number" name="mal" value="{{ old('mal') ?? '0' }}" class="form-control" required>
-                            </label>
+                            <label for="mal_id">MAL ID (@lang('request.required') For Anime)</label>
+                            <input type="number" name="mal" id="mal_id" value="{{ old('mal') ?? '0' }}" class="form-control" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="name">IGDB ID <b>(@lang('request.required') For Games)</b></label>
-                            <label>
-                                <input type="number" name="igdb" value="{{ old('igdb') ?? '0' }}" class="form-control" required>
-                            </label>
+                            <label for="igdb_id">IGDB ID <b>(@lang('request.required') For Games)</b></label>
+                            <input type="number" name="igdb" id="igdb_id" value="{{ old('igdb') ?? '0' }}" class="form-control" required>
                         </div>
         
                         <div class="form-group">
@@ -130,11 +120,9 @@
                         </div>
         
                         <div class="form-group">
-                            <label for="bonus_point">@lang('request.reward')
+                            <label for="bounty">@lang('request.reward')
                                 <small><em>(@lang('request.reward-desc'))</em></small></label>
-                            <label>
-                                <input class="form-control" name="bounty" type="number" min='100' value="100" required>
-                            </label>
+                            <input class="form-control" name="bounty" id="bounty" type="number" min='100' value="100" required>
                         </div>
         
                         <label for="anon" class="control-label">@lang('common.anonymous')?</label>

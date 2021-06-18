@@ -305,12 +305,8 @@
 						</div>
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="report_reason">Torrent ID</label>
-							</div>
-							<div class="form-group">
-								<label>
-									<input type="text" name="torrent_id" class="form-control">
-								</label>
+								<label for="modal_playlist_torrent_id">Torrent ID</label>
+								<input id="modal_playlist_torrent_id" type="text" name="torrent_id" class="form-control">
 							</div>
 							<div class="form-group">
 								<input class="btn btn-success" type="submit" value="@lang('common.save')">

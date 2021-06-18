@@ -38,18 +38,14 @@
                 @csrf
                 <div class="block">
                     <div class="form-group">
-                        <label for="name">@lang('request.title')</label>
-                        <label>
-                            <input type="text" name="name" class="form-control" value="{{ $torrentRequest->name }}" required>
-                        </label>
+                        <label for="request-name">@lang('request.title')</label>
+                        <input type="text" id="request-name" name="name" class="form-control" value="{{ $torrentRequest->name }}" required>
                     </div>
 
                     @if ($torrentRequest->category->movie_meta || $torrentRequest->category->tv_meta)
                         <div class="form-group">
-                            <label for="name">TMDB ID <b>(@lang('common.required'))</b></label>
-                            <label>
-                                <input type="number" name="tmdb" value="{{ $torrentRequest->tmdb }}" class="form-control" required>
-                            </label>
+                            <label for="tmdb_id">TMDB ID <b>(@lang('common.required'))</b></label>
+                            <input type="number" id="tmdb_id" name="tmdb" value="{{ $torrentRequest->tmdb }}" class="form-control" required>
                         </div>
                     @else
                         <input type="hidden" name="tmdb" value="0">
@@ -57,10 +53,8 @@
 
                     @if ($torrentRequest->category->movie_meta || $torrentRequest->category->tv_meta)
                         <div class="form-group">
-                            <label for="name">IMDB ID <b>(@lang('torrent.optional'))</b></label>
-                            <label>
-                                <input type="number" name="imdb" value="{{ $torrentRequest->imdb }}" class="form-control" required>
-                            </label>
+                            <label for="imdb_id">IMDB ID <b>(@lang('torrent.optional'))</b></label>
+                            <input type="number" id="imdb_id" name="imdb" value="{{ $torrentRequest->imdb }}" class="form-control" required>
                         </div>
                     @else
                         <input type="hidden" name="imdb" value="0">
@@ -68,10 +62,8 @@
 
                     @if ($torrentRequest->category->tv_meta)
                         <div class="form-group">
-                            <label for="name">TVDB ID <b>(@lang('torrent.optional'))</b></label>
-                            <label>
-                                <input type="number" name="tvdb" value="{{ $torrentRequest->tvdb }}" class="form-control" required>
-                            </label>
+                            <label for="tvdb_id">TVDB ID <b>(@lang('torrent.optional'))</b></label>
+                            <input type="number" id="tvdb_id" name="tvdb" value="{{ $torrentRequest->tvdb }}" class="form-control" required>
                         </div>
                     @else
                         <input type="hidden" name="tvdb" value="0">
@@ -79,10 +71,8 @@
 
                     @if ($torrentRequest->category->movie_meta || $torrentRequest->category->tv_meta)
                         <div class="form-group">
-                            <label for="name">MAL ID <b>(@lang('request.required') For Anime)</b></label>
-                            <label>
-                                <input type="number" name="mal" value="{{ $torrentRequest->mal }}" class="form-control" required>
-                            </label>
+                            <label for="mal_id">MAL ID <b>(@lang('request.required') For Anime)</b></label>
+                            <input type="number" id="mal_id" name="mal" value="{{ $torrentRequest->mal }}" class="form-control" required>
                         </div>
                     @else
                         <input type="hidden" name="mal" value="0">
@@ -90,10 +80,8 @@
 
                     @if ($torrentRequest->category->game_meta)
                         <div class="form-group">
-                            <label for="name">IGDB ID <b>@lang('request.required') For Games)</b></label>
-                            <label>
-                                <input type="number" name="igdb" value="{{ $torrentRequest->igdb }}" class="form-control" required>
-                            </label>
+                            <label for="igdb_id">IGDB ID <b>@lang('request.required') For Games)</b></label>
+                            <input type="number" id="igdb_id" name="igdb" value="{{ $torrentRequest->igdb }}" class="form-control" required>
                         </div>
                     @else
                         <input type="hidden" name="igdb" value="0">

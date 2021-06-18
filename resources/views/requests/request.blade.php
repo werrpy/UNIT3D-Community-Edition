@@ -453,9 +453,7 @@
                             <label>
                                 <input type="radio" value="1" name="anonymous">
                             </label> @lang('common.yes')
-                            <label>
-                                <input type="radio" value="0" checked="checked" name="anonymous">
-                            </label> @lang('common.no')
+                            <input type="radio" value="0" checked="checked" name="anonymous"> @lang('common.no')
                         </form>
                     </div>
                 </div>

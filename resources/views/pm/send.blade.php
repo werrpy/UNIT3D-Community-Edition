@@ -24,24 +24,17 @@
                     <form role="form" method="POST" action="{{ route('send-pm') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="users">@lang('common.username')</label>
-                            <label>
-                                <label>
-                                <input name="receiver_id" class="form-control" placeholder="@lang('common.username')" {{request()->has('username') ? 'readonly' : 'required'}} value="{{request()->has('username') ? request()->get('username') : '' }}">    
-                            </label>
-                            </label>
+                            <label for="receiver_id">@lang('common.username')</label>
+                            <input id="receiver_id" name="receiver_id" class="form-control" placeholder="@lang('common.username')" {{request()->has('username') ? 'readonly' : 'required'}} value="{{request()->has('username') ? request()->get('username') : '' }}">
                         </div>
     
                         <div class="form-group">
-                            <label for="">@lang('pm.subject')</label>
-                            <label>
-                                <input name="subject" class="form-control" placeholder="@lang('pm.enter-subject')" required>
-                            </label>
+                            <label for="pm-subject">@lang('pm.subject')</label>
+                            <input id="pm-subject" name="subject" class="form-control" placeholder="@lang('pm.enter-subject')" required>
                         </div>
     
                         <div class="form-group">
-                            <label for="">@lang('pm.message')</label>
-                            <label for="message"></label>
+                            <label for="message">@lang('pm.message')</label>
                             <textarea id="message" name="message" cols="30" rows="10" class="form-control"></textarea>
                         </div>
     
